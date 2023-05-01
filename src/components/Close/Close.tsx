@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import cx from "classnames";
-
 import { ReactComponent as Icon } from "./images/close.svg";
-import "./style.css";
+import "./style.scss";
 
 interface Props {
   className?: string;

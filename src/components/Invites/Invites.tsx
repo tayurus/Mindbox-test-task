@@ -5,7 +5,7 @@ import React, {
   useEffect,
   ChangeEvent,
 } from "react";
-import "./style.css";
+import "./style.scss";
 
 type Props = {
   invites: string[];
@@ -37,7 +37,11 @@ export const Invites: FC<Props> = ({ invites, onAdd }) => {
           type="text"
           value={name}
         />
-        <button className="invites--form-submit" onClick={handleSubmit}>
+        <button
+          disabled={name.trim() === ""}
+          className="invites--form-submit"
+          onClick={handleSubmit}
+        >
           Invite
         </button>
       </div>
