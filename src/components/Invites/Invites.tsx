@@ -1,16 +1,21 @@
-import React, { FC, useState, useCallback, useEffect } from "react";
-
+import React, {
+  FC,
+  useState,
+  useCallback,
+  useEffect,
+  ChangeEvent,
+} from "react";
 import "./style.css";
 
-interface Props {
+type Props = {
   invites: string[];
   onAdd: (name: string) => void;
-}
+};
 
 export const Invites: FC<Props> = ({ invites, onAdd }) => {
   const [name, setName] = useState("");
   const handleChangeName = useCallback(
-    (event: any) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       setName(event.target.value);
     },
     [setName]
@@ -38,7 +43,7 @@ export const Invites: FC<Props> = ({ invites, onAdd }) => {
       </div>
       <div className="invites--delimiter" />
       <ul className="invites--items">
-        {invites.map(name => (
+        {invites.map((name) => (
           <li className="invites--item">{name}</li>
         ))}
       </ul>
