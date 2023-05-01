@@ -1,42 +1,20 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-import { Modal,Invites } from "src/components";
+import { Modal, Invites } from "src/components";
 
-
-interface State {
-  invites: string[];
-  opened: boolean;
-}
-
-export class Root extends Component<{}, State> {
-  public readonly state: State = {
-    invites: [],
-    opened: false
-  };
-
-  public toggle(opened: boolean) {
-    (this.state as any).opened = opened;
-  }
-
-  public invite(name: string) {
-    this.setState(({ invites }) => {
-      invites.push(name);
-
-      return { invites };
-    });
-  }
-
-  public render() {
-    return (
-      <>
-        <button onClick={() => this.toggle(true)}>Open invites list!</button>
-        <Modal opened={this.state.opened} onClose={() => this.toggle(false)}>
-          <Invites
-            invites={this.state.invites}
-            onAdd={this.invite.bind(this)}
-          />
-        </Modal>
-      </>
-    );
-  }
-}
+type Props = {};
+export const Root: React.FC<Props> = () => {
+  const [invites, setInvites] = useState<string[]>([]);
+  const [opened, setOpened] = useState<boolean>(false);
+  return (
+    <>
+      <button onClick={() => setOpened(true)}>Open invites list!</button>
+      <Modal opened={opened} onClose={() => setOpened(false)}>
+        <Invites
+          invites={invites}
+          onAdd={(name) => setInvites((prevState) => [...prevState, name])}
+        />
+      </Modal>
+    </>
+  );
+};
