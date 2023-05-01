@@ -6,6 +6,9 @@ import React, {
   ChangeEvent,
 } from "react";
 import "./style.scss";
+import { cn } from "src/helpers/bem";
+
+const b = cn("invites");
 
 type Props = {
   invites: string[];
@@ -29,26 +32,28 @@ export const Invites: FC<Props> = ({ invites, onAdd }) => {
   }, [invites]);
 
   return (
-    <div className="invites">
-      <div className="invites--form">
+    <div className={b()}>
+      <div className={b("form")}>
         <input
-          className="invites--form-input"
+          className={b("form-input")}
           onChange={handleChangeName}
           type="text"
           value={name}
         />
         <button
           disabled={name.trim() === ""}
-          className="invites--form-submit"
+          className={b("form-submit")}
           onClick={handleSubmit}
         >
           Invite
         </button>
       </div>
-      <div className="invites--delimiter" />
-      <ul className="invites--items">
-        {invites.map((name) => (
-          <li className="invites--item">{name}</li>
+      <div className={b("delimiter")} />
+      <ul className={b("items")}>
+        {invites.map((name, index) => (
+          <li key={name + index} className={b("item")}>
+            {name}
+          </li>
         ))}
       </ul>
     </div>

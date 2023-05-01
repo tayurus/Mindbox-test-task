@@ -1,34 +1,36 @@
-.invites--form {
-  display: flex;
-  justify-content: space-between;
-}
+.invites {
+  &__form {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.invites input {
-  flex: 1 1 auto;
-  height: 24px;
-  padding: 0 5px;
-  line-height: 1;
-  margin-right: 5px;
-  border: 1px solid #ccc;
-}
+  input {
+    flex: 1 1 auto;
+    height: 24px;
+    padding: 0 5px;
+    line-height: 1;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+  }
 
-.invites button {
-  display: inline-block;
-  height: 26px;
-  border: 1px solid #ccc;
-}
+  button {
+    display: inline-block;
+    height: 26px;
+    border: 1px solid #ccc;
+  }
 
-.invites--delimiter {
-  background-color: #ccc;
-  height: 1px;
-  margin: 5px 0;
-}
+  &__delimiter {
+    background-color: #ccc;
+    height: 1px;
+    margin: 5px 0;
+  }
 
-.invites ul {
-  margin: 0;
-  padding: 0;
-}
+  ul {
+    margin: 0;
+    padding: 0;
 
-.invites ul li {
-  list-style: none;
+    li {
+      list-style: none;
+    }
+  }
 }
