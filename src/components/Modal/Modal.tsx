@@ -1,29 +1,16 @@
-import React, { Component, ReactNode } from "react";
+import React from "react";
 import { CSSTransition } from "react-transition-group";
-
 import { Close } from "../Close";
-
 import "./style.css";
 
-interface State {
-  opened: boolean;
-}
-
-interface Props {
+type Props = {
   opened: boolean;
   onClose: () => void;
+  children?: React.ReactNode
 }
 
-export class Modal extends Component<Props, State> {
-  public readonly state: State = {
-    opened: false
-  };
+export const Modal: React.FC<Props> = ({opened, onClose, children}) => {
 
-  public static getDerivedStateFromProps(props: Props, state: State): State {
-    return { opened: props.opened };
-  }
-
-  public render(): ReactNode {
     return (
       <CSSTransition
         classNames={{
@@ -34,17 +21,17 @@ export class Modal extends Component<Props, State> {
           exitActive: "modal_exit-active",
           exitDone: "modal_exit-done"
         }}
-        in={this.state.opened}
+        in={opened}
         timeout={300}
       >
         <div className="modal">
           <div className="modal--content">
-            <Close onClick={this.props.onClose} />
+            <Close onClick={onClose} />
 
-            {this.props.children}
+            {children}
           </div>
         </div>
       </CSSTransition>
     );
-  }
+
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import { Modal } from "./Modal";
-import { Invites } from "./Invites";
+import { Modal,Invites } from "src/components";
+
 
 interface State {
   invites: string[];
