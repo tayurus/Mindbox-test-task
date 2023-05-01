@@ -27,7 +27,6 @@ export const Modal: React.FC<Props> = ({opened, onClose, children}) => {
         <div className="modal">
           <div className="modal--content">
             <Close onClick={onClose} />
-
             {children}
           </div>
         </div>
